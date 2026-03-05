@@ -63,4 +63,4 @@ def play_music_for_emotion(detected_emotion):
 if __name__ == "__main__":
     print("Testing the clever music player...")
     # Run this multiple times, it will play a different song each time!
-    play_music_for_emotion("Stressed")
+    play_music_for_emotion("Happy")
