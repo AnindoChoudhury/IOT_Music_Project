@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Music AI</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body id="app-body">
+    <div class="glass-overlay"></div>
+    <div class="container">
+        <header>
+            <h1><i class="fa-solid fa-brain"></i> Emotion Music AI</h1>
+            <div class="status-indicator">
+                <span id="monitoring-status-dot" class="dot offline"></span>
+                <span id="monitoring-status-text">System Offline</span>
+            </div>
+        </header>
+
+        <main class="dashboard-grid">
+            
+            <!-- Emotion Panel -->
+            <section class="panel emotion-panel">
+                <h2>Current State</h2>
+                <div class="emotion-display">
+                    <div id="emotion-emoji" class="emoji">❓</div>
+                    <div id="emotion-text" class="emotion-name">Unknown</div>
+                </div>
+            </section>
+
+            <!-- Music Panel -->
+            <section class="panel music-panel">
+                <h2>Now Playing</h2>
+                <div class="track-info">
+                    <i class="fa-solid fa-music music-icon"></i>
+                    <div id="current-song" class="song-name">No track playing</div>
+                </div>
+                <div class="player-controls">
+                    <button id="btn-play" aria-label="Play" class="control-btn"><i class="fa-solid fa-play"></i></button>
+                    <button id="btn-pause" aria-label="Pause" class="control-btn"><i class="fa-solid fa-pause"></i></button>
+                    <button id="btn-stop" aria-label="Stop" class="control-btn"><i class="fa-solid fa-stop"></i></button>
+                </div>
+            </section>
+
+            <!-- Sensors Panel -->
+            <section class="panel sensors-panel">
+                <h2><i class="fa-solid fa-wave-square"></i> Live Biosensors</h2>
+                <div class="sensor-grid">
+                    <div class="sensor-card">
+                        <i class="fa-solid fa-temperature-half"></i>
+                        <span class="sensor-value" id="val-temp">--</span>
+                        <span class="sensor-unit">°C</span>
+                        <div class="sensor-label">Temperature</div>
+                    </div>
+                    <div class="sensor-card">
+                        <i class="fa-solid fa-droplet"></i>
+                        <span class="sensor-value" id="val-hum">--</span>
+                        <span class="sensor-unit">%</span>
+                        <div class="sensor-label">Humidity</div>
+                    </div>
+                    <div class="sensor-card">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                        <span class="sensor-value" id="val-hr">--</span>
+                        <span class="sensor-unit">BPM</span>
+                        <div class="sensor-label">Heart Rate</div>
+                    </div>
+                    <div class="sensor-card">
+                        <i class="fa-bolt fa-solid"></i>
+                        <span class="sensor-value" id="val-skin">--</span>
+                        <span class="sensor-unit">μS</span>
+                        <div class="sensor-label">Skin Cond.</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Controls Panel -->
+            <section class="panel control-panel">
+                <h2>Monitoring Controls</h2>
+                <div class="main-actions">
+                    <button id="btn-start" class="btn primary"><i class="fa-solid fa-power-off"></i> Start</button>
+                    <button id="btn-stop-mon" class="btn danger"><i class="fa-solid fa-power-off"></i> Stop</button>
+                </div>
+                <div class="simulation-actions">
+                    <h3>Simulate Trend</h3>
+                    <div class="trend-buttons">
+                        <button class="btn-trend" data-emotion="Calm">Calm</button>
+                        <button class="btn-trend" data-emotion="Happy">Happy</button>
+                        <button class="btn-trend" data-emotion="Stressed">Stressed</button>
+                        <button class="btn-trend" data-emotion="Workout">Workout</button>
+                        <button class="btn-trend" data-emotion="Sad">Sad</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
