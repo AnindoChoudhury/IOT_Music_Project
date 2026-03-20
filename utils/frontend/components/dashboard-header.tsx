@@ -11,8 +11,8 @@ export function DashboardHeader() {
             <Activity className="h-5 w-5 text-primary-foreground" />
           </div>
           <div>
-            <h1 className="text-lg font-bold text-foreground">IoT Emotion</h1>
-            <p className="text-xs text-muted-foreground">Music Recommender</p>
+            <h1 className="text-lg font-bold text-foreground">Resonance</h1>
+            <p className="text-xs text-muted-foreground">An Emotion Based Music Recommendation System</p>
           </div>
         </div>
 
