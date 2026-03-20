@@ -17,7 +17,7 @@ export default function Dashboard() {
   const [temperature, setTemperature] = useState("--")
   const [humidity,setHumidity] = useState("--")
   const [emotion, setEmotion] = useState("Awaiting Analysis...")
-  const [videoId, setVideoId] = useState("")
+  const [videoId, setVideoId] = useState("5qap5aO4i9A")
 
   const handleAnalyze = async () => {
     setIsAnalyzing(true)
@@ -145,7 +145,7 @@ export default function Dashboard() {
             />
 
             {/* Video Player */}
-            <VideoPlayer isReady={isAnalyzed} />
+            <VideoPlayer isReady={isAnalyzed} videoId={videoId} />
 
             {/* Recommendations */}
 

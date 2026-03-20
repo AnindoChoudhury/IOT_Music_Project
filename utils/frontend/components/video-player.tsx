@@ -1,51 +1,63 @@
 "use client"
 
-import { Play, Volume2 } from "lucide-react"
-
-interface VideoPlayerProps {
-  isReady: boolean
-}
-
-export function VideoPlayer({ isReady }: VideoPlayerProps) {
+export function VideoPlayer({ isReady, videoId } : {isReady: boolean; 
+  videoId: string;}) {
   return (
-    <div className="relative overflow-hidden rounded-xl border border-border bg-card">
-      <div className="p-4">
-        <div className="flex items-center justify-between">
-          <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-            Music Player
-          </h3>
-          <div className="flex items-center gap-2 text-muted-foreground">
-            <Volume2 className="h-4 w-4" />
-            <span className="text-xs">Ready</span>
-          </div>
-        </div>
-      </div>
+    <div className="relative flex w-full aspect-video flex-col items-center justify-center overflow-hidden rounded-xl border border-border bg-card p-6 shadow-sm">
+      
+      {/* 🎨 Custom CSS for the smooth flowing wave animation */}
+      <style>{`
+        @keyframes flowy-wave {
+          0%, 100% { height: 15%; opacity: 0.4; }
+          50% { height: 100%; opacity: 1; }
+        }
+        .wave-bar {
+          animation: flowy-wave 1.4s ease-in-out infinite;
+        }
+      `}</style>
 
-      {/* 16:9 aspect ratio container */}
-      <div className="relative aspect-video w-full bg-black/50">
-        {isReady ? (
+      {isReady && videoId ? (
+        <>
+          {/* 🔊 The Invisible DJ (Hidden YouTube Player) */}
           <iframe
-            className="absolute inset-0 h-full w-full"
-            src="https://www.youtube.com/embed/jfKfPfyJRdk?si=placeholder"
-            title="Music Player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
+            className="absolute h-1 w-1 opacity-0 pointer-events-none"
+            src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+            allow="autoplay"
+            title="Hidden Audio Player"
           />
-        ) : (
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-            <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-secondary to-muted">
-              <Play className="h-10 w-10 text-muted-foreground" />
-            </div>
-            <p className="text-sm text-muted-foreground">YouTube Player Ready</p>
-            <p className="text-xs text-muted-foreground/60">
-              Click {"\"Analyze Mood & Play Music\""} to begin
-            </p>
-          </div>
-        )}
 
-        {/* Scanline overlay effect */}
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.1)_50%)] bg-[length:100%_4px]" />
-      </div>
+          {/* UI Status Text */}
+          <div className="absolute top-6 flex flex-col items-center">
+            <span className="text-xs font-bold uppercase tracking-widest text-primary animate-pulse">
+              Audio Sync Active
+            </span>
+            <span className="text-sm text-muted-foreground mt-1">
+              Playing Therapeutic Frequencies
+            </span>
+          </div>
+
+          {/* The Flowy Waveform Visualizer */}
+          <div className="flex h-32 w-full items-center justify-center gap-1.5 mt-8">
+            {[...Array(30)].map((_, i) => {
+              // Creating a staggered delay so it looks like a real audio wave!
+              const staggerDelay = (Math.sin(i * 0.5) * 0.5).toFixed(2);
+              return (
+                <div
+                  key={i}
+                  className="w-2 rounded-full bg-primary wave-bar"
+                  style={{ animationDelay: `${staggerDelay}s` }}
+                />
+              );
+            })}
+          </div>
+        </>
+      ) : (
+        /* Idle State (Before clicking Analyze) */
+        <div className="flex flex-col items-center justify-center text-muted-foreground">
+          <div className="mb-4 h-1 w-32 rounded-full bg-secondary" />
+          <p className="text-sm font-medium">Awaiting biometric synchronization...</p>
+        </div>
+      )}
     </div>
-  )
+  );
 }
