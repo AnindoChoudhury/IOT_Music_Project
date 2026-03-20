@@ -1,23 +1,40 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
 import requests
+import pickle
+import os
+from utils.backend.music_player import get_video_id_for_emotion
 
 app = Flask(__name__)
-# This allows your React frontend to talk to this Flask server safely
 CORS(app)
+
+
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "ml_model", "model.pkl")
 
 # CONFIGURATION
 THINGSPEAK_CHANNEL_ID = "3284630"
 THINGSPEAK_READ_KEY = "CG1Z4WO9IN3HSKHP"
+
+try:
+    with open(MODEL_PATH, "rb") as file:
+        model = pickle.load(file)
+        print("✅ ML Model loaded successfully!")
+except Exception as e:
+    print(f"⚠️ Warning: Could not load model. Error: {e}")
+    model = None
 
 
 @app.route("/api/analyze", methods=["GET"])
 def analyze_and_play():
     print("Frontend requested an analysis...")
 
+    if model is None:
+        return jsonify({"status": "error", "message": "ML Model is offline."}), 500
+
     try:
         # STEP 1: Fetch live data from ThingSpeak
         ts_url = f"https://api.thingspeak.com/channels/{THINGSPEAK_CHANNEL_ID}/feeds.json?api_key={THINGSPEAK_READ_KEY}&results=1"
+
         response = requests.get(ts_url)
         data = response.json()
 
@@ -36,18 +53,14 @@ def analyze_and_play():
 
         #    ML Prediction
 
-        if heartbeatrate > 100 or skinsensitivity > 3000:
-            emotion = "Stressed"
-            video_id = "5qap5aO4i9A"  # Calming Lo-Fi audio
-        elif heartbeatrate < 60:
-            emotion = "Calm"
-            video_id = "jfKfPfyJRdk"  # Chill relaxed audio
-        else:
-            emotion = "High Energy"
-            video_id = "gOsM-DYAEhY"  # Upbeat/Workout audio
+        live_sensor_array = [[temperature, humidity, heartbeatrate, skinsensitivity]]
 
+        prediction = model.predict(live_sensor_array)
+        emotion = prediction[0]
+        videoid = get_video_id_for_emotion(emotion)
         print(f"Emotion Detected: {emotion}")
 
+        print(f"Emotion Detected by ML: {emotion}")
         # Frontend Connect
         return jsonify(
             {
@@ -59,7 +72,7 @@ def analyze_and_play():
                     "humidity": humidity,
                 },
                 "emotion": emotion,
-                "video_id": video_id,
+                "videoid": videoid,
             }
         )
 

@@ -17,7 +17,7 @@ export default function Dashboard() {
   const [temperature, setTemperature] = useState("--")
   const [humidity,setHumidity] = useState("--")
   const [emotion, setEmotion] = useState("Awaiting Analysis...")
-  const [videoId, setVideoId] = useState("5qap5aO4i9A")
+  const [videoId, setVideoId] = useState("NTcy1aAOA6I")
 
   const handleAnalyze = async () => {
     setIsAnalyzing(true)
@@ -34,7 +34,7 @@ export default function Dashboard() {
         setTemperature(data.biometrics.temperature)
         setHumidity(data.biometrics.humidity)
         setEmotion(data.emotion)
-        setVideoId(data.video_id)
+        setVideoId(data.videoid)
         setEmotion(data.emotion)
         setIsAnalyzed(true)
       } else {

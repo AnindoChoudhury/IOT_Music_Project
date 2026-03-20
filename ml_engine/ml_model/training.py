@@ -9,11 +9,9 @@ from sklearn.metrics import accuracy_score, classification_report
 def train():
 
     # 1. Get the directory where training.py is located
-    # Currently: emotion-music-ai/ml_engine/ml_model/
     current_dir = os.path.dirname(os.path.abspath(__file__))
 
     # 2. Go UP TWO folder levels to reach the main project root
-    # Currently: emotion-music-ai/
     project_root = os.path.dirname(os.path.dirname(current_dir))
 
     # 3. Build the correct path to the data file
