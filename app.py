@@ -31,7 +31,7 @@ def analyze_and_play():
         skinsensitivity = float(latest_feed.get("field4") or 0)
 
         print(
-            f"🫀 Live Data Caught -> temp : {temperature}, humidity: {humidity}, heartbeat: {heartbeatrate}, skinsensitivity:{skinsensitivity}"
+            f"Live Data Caught -> temp : {temperature}, humidity: {humidity}, heartbeat: {heartbeatrate}, skinsensitivity:{skinsensitivity}"
         )
 
         #    ML Prediction
