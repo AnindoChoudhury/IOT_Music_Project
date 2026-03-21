@@ -7,7 +7,8 @@ import random
 EMOTION_MUSIC_MAP = {
     "Stressed": "bollywood/english motivation song",
     "Calm": "hollywood/bollywood chill lofi relaxing beats",
-    "Physically active": "hindi workout songs/english imagine dragon type songs",
+    "Physically active": "Workout songs",
+    "Excited": "Phonk Music",
 }
 
 
