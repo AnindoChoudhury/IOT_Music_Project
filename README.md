@@ -33,7 +33,7 @@ python app.py
    ```
 3. **Access the Web Interface**
    Once the server is running, open your favorite web browser and navigate to:
-   [http://localhost:8000/](http://localhost:8000/)
+   [http://localhost:3000/](http://localhost:3000/)
 
 ## Project Structure
 
