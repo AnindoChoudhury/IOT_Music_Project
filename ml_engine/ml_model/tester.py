@@ -16,8 +16,11 @@ def test_model():
         return
 
     test_cases = [
-        {"name": "Calm Resting", "data": [[36.5, 100.0, 90.0, 300]]},
-    ]
+        {"name": "Calm Resting", "data": [[21.5, 37.0, 70.0, 87.0]]},
+         {"name": "Stressed mode", "data": [[31.0, 44.0, 97.0, 243.0]]},
+         {"name": "Physically Active", "data": [[31.0, 40.0, 97.0, 639.0]]},
+         {"name": "Excited Life", "data": [[23.0, 39.0, 72.0, 236]]}
+         ]
 
     print("\n--- Running Predictions ---")
     for test in test_cases:

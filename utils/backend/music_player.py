@@ -6,7 +6,7 @@ import random
 # Optimized search dictionary for rich, atmospheric acoustics
 EMOTION_MUSIC_MAP = {
     "Stressed": "bollywood/english motivation song",
-    "Calm": "hollywood/bollywood chill lofi relaxing beats",
+    "Calm": "lofi chill beats/bollywood romantic songs",
     "Physically active": "hindi workout songs/english imagine dragon type songs",
 }
 
@@ -34,7 +34,7 @@ def get_video_id_for_emotion(detected_emotion):
         if video_ids:
             unique_ids = list(dict.fromkeys(video_ids))
 
-            top_50_results = unique_ids[:50]
+            top_50_results = unique_ids[:20]
             chosen_id = random.choice(top_50_results)
 
             print(f"🎲 Selected random video ID: {chosen_id}")
