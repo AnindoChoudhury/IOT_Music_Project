@@ -12,13 +12,7 @@ A full-stack Python application that predicts a user's emotional state using phy
 1. **Clone or Download the Repository**
    Ensure you have the project files on your local machine.
 
-2. **Navigate to the Project Directory**
-   Open your terminal and navigate to the root folder of the project:
-   ```powershell
-   cd "c:\Users\KIIT0001\OneDrive\Desktop\python-prac\IOT project\emotion-music-ai"
-   ```
-
-3. **Install Dependencies**
+2. **Install Dependencies**
    Install the required Python packages using `pip`:
    ```powershell
    pip install -r requirements.txt
@@ -28,21 +22,24 @@ A full-stack Python application that predicts a user's emotional state using phy
 ## Running the Application
 
 1. **Start the Backend Server**
-   Start the FastAPI server using `uvicorn`:
-   ```powershell
-   uvicorn app.main:app --reload
+  Navigate to the root directory
+```bash
+python app.py
+```
+2. **Start the frontend**
+   Navigate to utils/frontend
+   ```bash
+      npm run dev
    ```
-   The `--reload` flag allows the server to automatically restart if you make any changes to the code.
-
-2. **Access the Web Interface**
+3. **Access the Web Interface**
    Once the server is running, open your favorite web browser and navigate to:
    [http://localhost:8000/](http://localhost:8000/)
 
 ## Project Structure
 
-- `app/`: Core FastAPI application and routing.
+- `app/`: Core Flask application and routing.
 - `data/`: Datasets or collected data logs.
 - `ml_model/`: Machine learning model predicting emotions based on sensor input.
 - `music_engine/`: Module responsible for managing and playing songs.
 - `sensors/`: Simulated hardware interfaces capturing physiological/environmental data.
-- `ui/`: Frontend assets (HTML, CSS, JS) served as static files.
+- `utils/`: Frontend assets (React) and Music Recommender
