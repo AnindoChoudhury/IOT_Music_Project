@@ -32,9 +32,9 @@ export function EmotionResultCard({ emotion, isActive }: EmotionResultCardProps)
         </div>
 
         <div className="flex items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-amber-500/20 to-orange-500/20">
-            <Zap className="h-6 w-6 text-amber-400" />
-          </div>
+          {/* <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-amber-500/20 to-orange-500/20"> */}
+            {/* <Zap className="h-6 w-6 text-amber-400" /> */}
+          {/* </div> */}
           <div>
             <p className="text-xs text-muted-foreground">Detected Emotion</p>
             <p className="text-xl font-bold text-foreground">{emotion}</p>

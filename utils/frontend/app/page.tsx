@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Heart, Activity } from "lucide-react"
+import { Heart, Activity, Thermometer, GlassWater, RatIcon, Droplet } from "lucide-react"
 import { DashboardHeader } from "@/components/dashboard-header"
 import { MetricCard } from "@/components/metric-card"
 import { AnalyzeButton } from "@/components/analyze-button"
@@ -73,7 +73,7 @@ export default function Dashboard() {
               <MetricCard
                 title="Humidity"
                 value={humidity?.toString() ?? "--"}
-                icon={Activity}
+                icon={Droplet}
                 iconColor="text-yellow-400"
                 glowColor="bg-yellow-500"
               />
@@ -81,7 +81,7 @@ export default function Dashboard() {
               <MetricCard
                 title="Temperature"
                 value={temperature?.toString() ?? "--"}
-                icon={Activity}
+                icon={Thermometer}
                 unit = "°C"
                 iconColor="text-purple-400"
                 glowColor="bg-purple-500"
