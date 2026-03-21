@@ -6,7 +6,7 @@ import random
 # Optimized search dictionary for rich, atmospheric acoustics
 EMOTION_MUSIC_MAP = {
     "Stressed": "bollywood/english motivation song",
-    "Calm": "Bollywood/Hollywood chill beats relaxing",
+    "Calm": "hollywood/bollywood chill lofi relaxing beats",
     "Physically active": "hindi workout songs/english imagine dragon type songs",
 }
 

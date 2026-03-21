@@ -11,6 +11,7 @@ import { VideoPlayer } from "@/components/video-player"
 export default function Dashboard() {
   const [isAnalyzing, setIsAnalyzing] = useState(false)
   const [isAnalyzed, setIsAnalyzed] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(true)
 
   const [heartRate, setHeartRate] = useState("--")
   const [gsr, setGsr] = useState("--")
@@ -22,7 +23,6 @@ export default function Dashboard() {
   const handleAnalyze = async () => {
     setIsAnalyzing(true)
     setIsAnalyzed(false) // Reset previous results
-
     try {
       //Hit the Flask API
       const response = await fetch('http://127.0.0.1:5000/api/analyze')
@@ -37,6 +37,8 @@ export default function Dashboard() {
         setVideoId(data.videoid)
         setEmotion(data.emotion)
         setIsAnalyzed(true)
+        setIsPlaying(true)
+
       } else {
         console.error("Server Error:", data.message)
         alert("Failed to analyze data. Check backend logs.")
@@ -145,7 +147,12 @@ export default function Dashboard() {
             />
 
             {/* Video Player */}
-            <VideoPlayer isReady={isAnalyzed} videoId={videoId} />
+            <VideoPlayer 
+              isReady={isAnalyzed} 
+              videoId={videoId} 
+              isPlaying={isPlaying} 
+              setIsPlaying={setIsPlaying} 
+            />
 
             {/* Recommendations */}
 
