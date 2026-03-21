@@ -31,7 +31,7 @@ def train():
 
     # 2. Load and format the data
     print("Loading data...")
-    df = pd.read_excel(data_path, header=2, usecols=[0, 2, 4, 6, 8])
+    df = pd.read_excel(data_path, header=4, usecols=[0, 2, 4, 6, 8])
     df.columns = [str(c).strip() for c in df.columns]
 
     column_mapping = {
