@@ -55,6 +55,8 @@ def analyze_and_play():
 
         live_sensor_array = [[temperature, humidity, heartbeatrate, skinsensitivity]]
 
+        # test_sensor_array = [[25, 60, 70, 200]]
+
         prediction = model.predict(live_sensor_array)
         emotion = prediction[0]
         videoid = get_video_id_for_emotion(emotion)

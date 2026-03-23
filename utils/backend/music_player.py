@@ -5,10 +5,10 @@ import random
 
 # Optimized search dictionary for rich, atmospheric acoustics
 EMOTION_MUSIC_MAP = {
-    "Stressed": "bollywood/english motivation song",
-    "Calm": "hollywood/bollywood chill lofi relaxing beats",
-    "Physically active": "Workout songs",
-    "Excited": "Phonk Music",
+    "Stressed": "Peaceful krishna soothing chants top peaceful krishna bhajan",
+    "Calm": "top bollywood lofi romantic songs for relaxing",
+    "Physically active": "Imagine dragons/Linkin Park workout songs",
+    "Excited": "upbeat bollywood dance party club banger",
 }
 
 
